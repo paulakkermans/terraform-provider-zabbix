@@ -2,6 +2,8 @@ module github.com/paulakkermans/terraform-provider-zabbix
 
 go 1.12
 
+replace github.com/claranet/go-zabbix-api v1.0.0 => github.com/paulakkermans/go-zabbix-api v1.0.1
+
 require (
 	github.com/hashicorp/go-getter v1.4.2-0.20200106182914-9813cbd4eb02 // indirect
 	github.com/hashicorp/hcl/v2 v2.3.0 // indirect
