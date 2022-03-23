@@ -1,9 +1,7 @@
 package zabbix
 
 import (
-	"fmt"
 	"log"
-	"strings"
 
 	"github.com/claranet/go-zabbix-api"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -13,9 +11,6 @@ func resourceZabbixService() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceZabbixServiceCreate,
 		Read:   resourceZabbixServiceRead,
-		Exists: resourceZabbixServiceExists,
-		Update: resourceZabbixServiceUpdate,
-		Delete: resourceZabbixServiceDelete,
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
@@ -30,26 +25,26 @@ func resourceZabbixService() *schema.Resource {
 				Elem:     &schema.Schema{Type: schema.TypeString},
 				Optional: true,
 			},
-			"goodsla": &schema.Schema{        
-                                Type:     schema.TypeSet,
-                                Elem:     &schema.Schema{Type: schema.TypeString},
-                                Optional: true,
-                        },
-			"algorithm": &schema.Schema{        
-                                Type:     schema.TypeSet,
-                                Elem:     &schema.Schema{Type: schema.TypeString},
-                                Optional: true,
-                        },
-			"sortoder": &schema.Schema{        
-                                Type:     schema.TypeSet,
-                                Elem:     &schema.Schema{Type: schema.TypeString},
-                                Optional: true,
-                        },
-			"triggerid": &schema.Schema{  
-                                Type:     schema.TypeSet,
-                                Elem:     &schema.Schema{Type: schema.TypeString},
-                                Optional: true,
-                        },
+			"goodsla": &schema.Schema{
+				Type:     schema.TypeSet,
+				Elem:     &schema.Schema{Type: schema.TypeString},
+				Optional: true,
+			},
+			"algorithm": &schema.Schema{
+				Type:     schema.TypeSet,
+				Elem:     &schema.Schema{Type: schema.TypeString},
+				Optional: true,
+			},
+			"sortoder": &schema.Schema{
+				Type:     schema.TypeSet,
+				Elem:     &schema.Schema{Type: schema.TypeString},
+				Optional: true,
+			},
+			"triggerid": &schema.Schema{
+				Type:     schema.TypeSet,
+				Elem:     &schema.Schema{Type: schema.TypeString},
+				Optional: true,
+			},
 		},
 	}
 }
@@ -57,12 +52,12 @@ func resourceZabbixService() *schema.Resource {
 func createServiceObject(d *schema.ResourceData) *zabbix.Service {
 
 	service := zabbix.Service{
-		Algorithm:        d.Get("algorithm").(int),
-		Name:         d.Get("name").(string),
-		Showsla:         d.Get("showsla").(int)),
-		Sortorder:    zabbix.ValueType(d.Get("value_type").(int)),
-		Goodsla:     zabbix.DataType(d.Get("data_type").(int)),
-		Triggerid:  d.Get("Triggerid").(int),
+		Algorithm: d.Get("algorithm").(int),
+		Name:      d.Get("name").(string),
+		Showsla:   d.Get("showsla").(int),
+		Sortorder: zabbix.ValueType(d.Get("value_type").(int)),
+		Goodsla:   zabbix.DataType(d.Get("data_type").(int)),
+		Triggerid: d.Get("Triggerid").(int),
 	}
 
 	return &service
