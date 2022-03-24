@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/mcuadros/go-version"
+	"github.com/paulakkermans/go-zabbix-api"
 )
 
 // Provider define the provider and his resources
